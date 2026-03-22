@@ -92,9 +92,11 @@
             background: #555;
         }
 
-        /* Шапка без картинки */
+        /* Шапка с изображением */
         header {
-            background: linear-gradient(135deg, #b22222 0%, #8b1a1a 100%);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
             color: white;
             text-align: center;
@@ -103,24 +105,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-        }
-
-        .header-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255,255,255,0.1) 2px,
-                    rgba(255,255,255,0.1) 4px
-                );
-            opacity: 0.3;
-            pointer-events: none;
         }
 
         nav {
@@ -199,7 +183,7 @@
             cursor: pointer;
         }
 
-        /* О ресторане без картинки */
+        /* О ресторане с изображением */
         .about {
             background: #fff;
         }
@@ -217,21 +201,14 @@
         .about-image {
             flex: 1;
             height: 400px;
-            background: linear-gradient(135deg, #f8f5f2 0%, #e8e5e2 100%);
+            background: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #ddd;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .about-image i {
-            font-size: 4rem;
-            color: #b22222;
-            opacity: 0.3;
-        }
-
-        /* Большое меню без картинок */
+        /* Меню с карточками товаров */
         .menu {
             background: #f8f5f2;
         }
@@ -280,26 +257,24 @@
         .menu-items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 15px;
+            gap: 20px;
         }
 
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            padding: 15px 0;
-            border-bottom: 1px dashed #eee;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             transition: all 0.3s ease;
+            background: #fff;
+            border-radius: 10px;
         }
 
         .menu-item:hover {
             background-color: #fcf8f3;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .menu-item:last-child {
-            border-bottom: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
         .menu-item-content {
@@ -317,7 +292,6 @@
             color: #666;
             font-size: 0.95rem;
             line-height: 1.5;
-            max-width: 90%;
         }
 
         .menu-item-weight {
@@ -329,7 +303,7 @@
         .menu-item-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .menu-item-price {
@@ -337,7 +311,6 @@
             font-weight: 700;
             color: #b22222;
             white-space: nowrap;
-            margin-left: 20px;
         }
 
         .quantity-controls {
@@ -618,6 +591,16 @@
             text-align: center;
         }
 
+        .map-placeholder {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            background: url('https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
         /* Подвал */
         footer {
             background: #222;
@@ -800,6 +783,7 @@
             .menu-item {
                 flex-direction: column;
                 gap: 10px;
+                text-align: center;
             }
 
             .menu-item-price {
@@ -878,11 +862,10 @@
     </div>
 
     <header id="home">
-        <div class="header-pattern"></div>
         <div class="container">
             <h1>Восточный Вкус</h1>
             <p>Аутентичная азиатская кухня в самом сердце города</p>
-            <div style="display: flex; gap: 20px; margin-top: 30px;">
+            <div style="display: flex; gap: 20px; margin-top: 30px; justify-content: center;">
                 <a href="#menu" class="btn">Посмотреть меню</a>
                 <a href="#delivery" class="btn btn-secondary">Заказать доставку</a>
             </div>
@@ -903,14 +886,12 @@
                         <a href="#delivery" class="btn btn-secondary">Заказать доставку</a>
                     </div>
                 </div>
-                <div class="about-image">
-                    <i class="fas fa-utensils"></i>
-                </div>
+                <div class="about-image"></div>
             </div>
         </div>
     </section>
 
-    <!-- Большое меню без картинок -->
+    <!-- Большое меню -->
     <section id="menu" class="menu">
         <div class="container">
             <h2>Наше меню</h2>
@@ -927,58 +908,44 @@
 
             <!-- Суши и роллы -->
             <div class="menu-section" data-category="sushi">
-                <h3 class="section-title">Суши и роллы</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🍣 Суши и роллы</h3>
+                <div class="menu-items-grid" id="sushi-items"></div>
             </div>
 
             <!-- WOK -->
             <div class="menu-section" data-category="wok">
-                <h3 class="section-title">WOK-блюда</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🍜 WOK-блюда</h3>
+                <div class="menu-items-grid" id="wok-items"></div>
             </div>
 
             <!-- Супы -->
             <div class="menu-section" data-category="soups">
-                <h3 class="section-title">Супы</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🥣 Супы</h3>
+                <div class="menu-items-grid" id="soups-items"></div>
             </div>
 
             <!-- Главные блюда -->
             <div class="menu-section" data-category="main">
-                <h3 class="section-title">Главные блюда</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🍛 Главные блюда</h3>
+                <div class="menu-items-grid" id="main-items"></div>
             </div>
 
             <!-- Салаты -->
             <div class="menu-section" data-category="salads">
-                <h3 class="section-title">Салаты</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🥗 Салаты</h3>
+                <div class="menu-items-grid" id="salads-items"></div>
             </div>
 
             <!-- Десерты -->
             <div class="menu-section" data-category="desserts">
-                <h3 class="section-title">Десерты</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🍰 Десерты</h3>
+                <div class="menu-items-grid" id="desserts-items"></div>
             </div>
 
             <!-- Напитки -->
             <div class="menu-section" data-category="drinks">
-                <h3 class="section-title">Напитки</h3>
-                <div class="menu-items-grid">
-                    <!-- Блюда будут добавлены через JavaScript -->
-                </div>
+                <h3 class="section-title">🥤 Напитки</h3>
+                <div class="menu-items-grid" id="drinks-items"></div>
             </div>
         </div>
     </section>
@@ -1174,6 +1141,7 @@
                             <p>Время доставки: 45-60 минут</p>
                         </div>
                     </div>
+                    <div class="map-placeholder"></div>
                 </div>
                 <div class="contact-form">
                     <h3>Забронировать стол</h3>
@@ -1243,7 +1211,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Восточный Вкус. Все права защищены.</p>
+                <p>&copy; 2025 Восточный Вкус. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -1255,9 +1223,7 @@
                 <h3>Заказ оформлен!</h3>
                 <button class="close-modal" id="close-modal">&times;</button>
             </div>
-            <div id="order-summary">
-                <!-- Здесь будет отображаться сводка заказа -->
-            </div>
+            <div id="order-summary"></div>
             <div style="margin-top: 30px; text-align: center;">
                 <p style="color: #228b22; font-weight: 600;">
                     <i class="fas fa-check-circle"></i> Ваш заказ успешно оформлен!
@@ -1336,19 +1302,6 @@
         const deliveryCost = 200;
         const freeDeliveryThreshold = 1000;
 
-        // Инициализация меню
-        function initMenu() {
-            for (const category in menuItems) {
-                const section = document.querySelector(`[data-category="${category}"] .menu-items-grid`);
-                if (section) {
-                    menuItems[category].forEach(item => {
-                        const menuItemElement = createMenuItemElement(item);
-                        section.appendChild(menuItemElement);
-                    });
-                }
-            }
-        }
-
         // Создание элемента меню
         function createMenuItemElement(item) {
             const div = document.createElement('div');
@@ -1356,14 +1309,14 @@
             div.dataset.id = item.id;
             
             const indicators = [];
-            if (item.spicy) indicators.push('<span class="spicy-indicator">Острое</span>');
-            if (item.vegetarian) indicators.push('<span class="vegetarian-indicator">Вегетарианское</span>');
+            if (item.spicy) indicators.push('<span class="spicy-indicator">🌶️ Острое</span>');
+            if (item.vegetarian) indicators.push('<span class="vegetarian-indicator">🌱 Вегетарианское</span>');
             
             div.innerHTML = `
                 <div class="menu-item-content">
                     <div class="menu-item-title">${item.name} ${indicators.join(' ')}</div>
                     <div class="menu-item-description">${item.description}</div>
-                    <div class="menu-item-weight">${item.weight}</div>
+                    <div class="menu-item-weight">⚖️ ${item.weight}</div>
                 </div>
                 <div class="menu-item-controls">
                     <div class="quantity-controls">
@@ -1372,11 +1325,23 @@
                         <button class="quantity-btn plus" data-id="${item.id}">+</button>
                     </div>
                     <div class="menu-item-price">${item.price} ₽</div>
-                    <button class="add-to-cart" data-id="${item.id}">В корзину</button>
+                    <button class="add-to-cart" data-id="${item.id}">🛒 В корзину</button>
                 </div>
             `;
             
             return div;
+        }
+
+        // Инициализация меню
+        function initMenu() {
+            for (const category in menuItems) {
+                const container = document.getElementById(`${category}-items`);
+                if (container) {
+                    menuItems[category].forEach(item => {
+                        container.appendChild(createMenuItemElement(item));
+                    });
+                }
+            }
         }
 
         // Обновление корзины
@@ -1387,7 +1352,6 @@
             const deliveryCostElement = document.getElementById('delivery-cost');
             const finalTotalElement = document.getElementById('cart-final-total');
             
-            // Очищаем контейнер
             cartItemsContainer.innerHTML = '';
             
             let total = 0;
@@ -1425,28 +1389,21 @@
                 });
             }
             
-            // Обновляем счетчик
             cartCount.textContent = itemCount;
-            
-            // Обновляем сумму
             cartTotalElement.textContent = `${total} ₽`;
             
-            // Рассчитываем стоимость доставки
             let currentDeliveryCost = 0;
             if (deliveryType === 'delivery') {
                 currentDeliveryCost = total >= freeDeliveryThreshold ? 0 : deliveryCost;
             }
             deliveryCostElement.textContent = `${currentDeliveryCost} ₽`;
             
-            // Итоговая сумма
             const finalTotal = total + currentDeliveryCost;
             finalTotalElement.textContent = `${finalTotal} ₽`;
             
-            // Обновляем количество в меню
             updateMenuQuantities();
         }
 
-        // Обновление количества в меню
         function updateMenuQuantities() {
             cart.forEach(item => {
                 const quantityElement = document.querySelector(`.quantity[data-id="${item.id}"]`);
@@ -1456,9 +1413,7 @@
             });
         }
 
-        // Добавление товара в корзину
         function addToCart(itemId) {
-            // Находим товар в меню
             let foundItem = null;
             for (const category in menuItems) {
                 const item = menuItems[category].find(i => i.id === itemId);
@@ -1470,23 +1425,18 @@
             
             if (!foundItem) return;
             
-            // Проверяем, есть ли уже такой товар в корзине
             const existingItem = cart.find(item => item.id === itemId);
             
             if (existingItem) {
                 existingItem.quantity++;
             } else {
-                cart.push({
-                    ...foundItem,
-                    quantity: 1
-                });
+                cart.push({ ...foundItem, quantity: 1 });
             }
             
             updateCart();
-            showCartNotification(`Добавлено: ${foundItem.name}`);
+            showCartNotification(`✅ Добавлено: ${foundItem.name}`);
         }
 
-        // Изменение количества товара
         function changeQuantity(itemId, delta) {
             const itemIndex = cart.findIndex(item => item.id === itemId);
             
@@ -1501,16 +1451,13 @@
             }
         }
 
-        // Очистка корзины
         function clearCart() {
             cart = [];
             updateCart();
             showCartNotification('Корзина очищена');
         }
 
-        // Показать уведомление
         function showCartNotification(message) {
-            // Создаем элемент уведомления
             const notification = document.createElement('div');
             notification.textContent = message;
             notification.style.cssText = `
@@ -1526,46 +1473,24 @@
                 animation: slideIn 0.3s ease;
             `;
             
-            // Добавляем анимацию
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(style);
-            
             document.body.appendChild(notification);
             
-            // Удаляем уведомление через 3 секунды
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
+                notification.remove();
             }, 3000);
         }
 
-        // Оформление заказа
         function checkout() {
             if (cart.length === 0) {
                 alert('Добавьте товары в корзину перед оформлением заказа');
                 return;
             }
             
-            // Прокручиваем к разделу доставки
             document.getElementById('delivery').scrollIntoView({ behavior: 'smooth' });
-            
-            // Закрываем корзину
             document.getElementById('cart-sidebar').classList.remove('active');
         }
 
-        // Подтверждение заказа
         function confirmOrder(orderData) {
-            // Создаем сводку заказа
             let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let deliveryCostValue = deliveryType === 'delivery' && total < freeDeliveryThreshold ? deliveryCost : 0;
             let finalTotal = total + deliveryCostValue;
@@ -1606,38 +1531,24 @@
                 </div>
             `;
             
-            // Показываем модальное окно
             document.getElementById('order-modal').classList.add('active');
-            
-            // Очищаем корзину
             clearCart();
-            
-            // Сбрасываем формы
             document.getElementById('order-form').reset();
             document.getElementById('pickup-form-data').reset();
-            
-            // Устанавливаем сегодняшнюю дату по умолчанию
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('date').value = today;
-            document.getElementById('date').min = today;
         }
 
-        // Инициализация
+        // Инициализация событий
         document.addEventListener('DOMContentLoaded', function() {
-            // Инициализируем меню
             initMenu();
             
-            // Устанавливаем сегодняшнюю дату по умолчанию
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('date').value = today;
             document.getElementById('date').min = today;
             
-            // Мобильное меню
             document.querySelector('.mobile-menu').addEventListener('click', function() {
                 document.querySelector('.nav-links').classList.toggle('active');
             });
             
-            // Открытие/закрытие корзины
             document.getElementById('cart-icon').addEventListener('click', function() {
                 document.getElementById('cart-sidebar').classList.add('active');
             });
@@ -1646,13 +1557,9 @@
                 document.getElementById('cart-sidebar').classList.remove('active');
             });
             
-            // Очистка корзины
             document.getElementById('clear-cart').addEventListener('click', clearCart);
-            
-            // Оформление заказа из корзины
             document.getElementById('checkout-btn').addEventListener('click', checkout);
             
-            // Закрытие модального окна
             document.getElementById('close-modal').addEventListener('click', function() {
                 document.getElementById('order-modal').classList.remove('active');
             });
@@ -1661,28 +1568,23 @@
                 document.getElementById('order-modal').classList.remove('active');
             });
             
-            // Обработка кликов по меню
             document.addEventListener('click', function(e) {
-                // Добавление в корзину
                 if (e.target.classList.contains('add-to-cart')) {
                     const itemId = parseInt(e.target.dataset.id);
                     addToCart(itemId);
                 }
                 
-                // Изменение количества
                 if (e.target.classList.contains('quantity-btn')) {
                     const itemId = parseInt(e.target.dataset.id);
                     const isPlus = e.target.classList.contains('plus');
-                    const isMinus = e.target.classList.contains('minus');
                     
                     if (isPlus) {
                         addToCart(itemId);
-                    } else if (isMinus) {
+                    } else {
                         changeQuantity(itemId, -1);
                     }
                 }
                 
-                // Фильтрация по категориям
                 if (e.target.classList.contains('category-btn')) {
                     document.querySelectorAll('.category-btn').forEach(btn => {
                         btn.classList.remove('active');
@@ -1699,7 +1601,6 @@
                     });
                 }
                 
-                // Фильтрация при клике на ссылки в футере
                 if (e.target.hasAttribute('data-category')) {
                     e.preventDefault();
                     const category = e.target.dataset.category;
@@ -1723,7 +1624,6 @@
                 }
             });
             
-            // Выбор типа доставки
             document.querySelectorAll('.delivery-option').forEach(option => {
                 option.addEventListener('click', function() {
                     document.querySelectorAll('.delivery-option').forEach(opt => {
@@ -1733,7 +1633,6 @@
                     
                     deliveryType = this.dataset.type;
                     
-                    // Показываем соответствующую форму
                     if (deliveryType === 'delivery') {
                         document.getElementById('delivery-form').classList.add('active');
                         document.getElementById('pickup-form').classList.remove('active');
@@ -1746,7 +1645,6 @@
                 });
             });
             
-            // Оформление заказа доставки
             document.getElementById('order-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -1764,7 +1662,6 @@
                 confirmOrder(orderData);
             });
             
-            // Оформление заказа самовывоза
             document.getElementById('pickup-form-data').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -1780,14 +1677,12 @@
                 confirmOrder(orderData);
             });
             
-            // Бронирование столика
             document.getElementById('reservation-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('Столик успешно забронирован! Мы свяжемся с вами для подтверждения.');
                 this.reset();
             });
             
-            // Плавная прокрутка
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -1801,13 +1696,11 @@
                             behavior: 'smooth'
                         });
                         
-                        // Закрываем мобильное меню
                         document.querySelector('.nav-links').classList.remove('active');
                     }
                 });
             });
             
-            // Изменение навигации при прокрутке
             window.addEventListener('scroll', function() {
                 const nav = document.querySelector('nav');
                 if (window.scrollY > 50) {
@@ -1819,15 +1712,6 @@
                 }
             });
         });
-           // Инструменты для оптимизации:
-- Lighthouse в Chrome DevTools
-- WebPageTest
-- GTmetrix
-
-// Ключевые метрики:
-- First Contentful Paint (FCP)
-- Time to Interactive (TTI)
-- Cumulative Layout Shift (CLS)
     </script>
 </body>
 </html>
